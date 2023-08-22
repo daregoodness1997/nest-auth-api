@@ -12,7 +12,6 @@ import { JwtGuard } from 'src/auth/guards/jwt-auth.guard';
 import { CommentService } from 'src/comment/comment.service';
 import { CreateUserDto } from './dto/createUserDto';
 import { UserService } from './user.service';
-import { LocalAuthGuard } from 'src/auth/guards/local-auth.guard';
 
 @Controller('users')
 export class UserController {

@@ -5,11 +5,11 @@ import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConne
 
 const config: PostgresConnectionOptions = {
   type: 'postgres',
-  database: 'nest_postgress',
-  host: 'dpg-cjhvgeb37aks73cibrbg-a.frankfurt-postgres.render.com',
+  database: process.env.DB_NAME,
+  host: process.env.DB_HOST,
   port: 5432,
-  username: 'nest_postgress_user',
-  password: 'iML7rIIspGQKwbsbmjwcBh5cfqBrLu3K',
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS,
   entities: [User, Topic, Comment],
   synchronize: true,
   ssl: { rejectUnauthorized: false },

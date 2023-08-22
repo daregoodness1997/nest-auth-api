@@ -21,15 +21,16 @@ export class AuthService {
   }
 
   async login(user: LoginUserDto) {
+    const findUser = await this.userService.findOneWithUserName(user.username);
+
     const payload = {
-      username: user.email,
-      sub: {
-        user: user.email,
-      },
+      username: user.username,
+      email: findUser.email,
+      name: findUser.name,
     };
 
     return {
-      ...user,
+      username: user.username,
       accessToken: this.jwtService.sign(payload),
       refreshToken: this.jwtService.sign(payload, { expiresIn: '7d' }),
     };

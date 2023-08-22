@@ -13,6 +13,7 @@ export class AuthController {
     private userService: UserService,
   ) {}
 
+  @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Body() loginUserDto: LoginUserDto) {
     return await this.authService.login(loginUserDto);
