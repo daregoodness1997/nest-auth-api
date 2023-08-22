@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { Comment } from './comment.entity';
+import { Employee } from './employee.entity';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
@@ -25,7 +26,10 @@ export class User {
   @Column({ nullable: true })
   organizationId: string;
 
-  @OneToMany((type) => Comment, (comment) => comment.user)
+  @OneToMany(() => Comment, (employee) => employee.user)
+  employees: Employee[];
+
+  @OneToMany(() => Comment, (comment) => comment.user)
   comments: Comment[];
 
   @BeforeInsert()
